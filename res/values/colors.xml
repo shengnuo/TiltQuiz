@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="option_color">#911F1F</color>
+    <color name="score_color">#FFFFFF</color>
+    <color name="question_color">#B85E5E</color>
+    <color name="text_view_background">#CCCCCC</color>
+    <color name="BRACK">#000000</color>
+</resources>
