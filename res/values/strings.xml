@@ -3,16 +3,19 @@
 
     <string name="app_name">TheGame</string>
     <string name="action_settings">Settings</string>
-    <string name="score_text_view">Score: </string>
-    <string name="question_text_view">//INSERT QUESTIONS HERE</string>
+    <string name="score_text_view">0 </string>
+    <string name="question_text_view">QUESTION</string>
     <string name="submit_button_text">Submit</string>
     <string name="time_text_view">Time Left:</string>
     <string name="score_value">0</string>
     <string name="welcome_text_view">Welcom!</string>
     <string name="start_button_text">Start</string>
-    <string name="top_option_text_view">TOP OPTION</string>
-    <string name="buttom_option_text_view">BUTTOM OPTION</string>
-    <string name="right_option_text_view">RIGHT OPTION</string>
-    <string name="left_option_text_view">LEFT_OPTION</string>
+    <string name="top_option_text_view">TOP</string>
+    <string name="buttom_option_text_view">BUTTOM</string>
+    <string name="right_option_text_view">RIGHT</string>
+    <string name="left_option_text_view">LEFT</string>
+    <string name="score_text_constant">Score:</string>
+    <string name="title_activity_over">OverActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

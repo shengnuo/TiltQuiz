@@ -6,10 +6,14 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.view.Menu;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends Activity implements SensorEventListener {
@@ -20,7 +24,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 	TextView botOption;
 	TextView leftOption;
 	TextView rightOption;
-	TextView questionText;
+	EditText questionText;
 	TextView score;
 	int scoreValue;
 	private int answer;
@@ -28,6 +32,12 @@ public class MainActivity extends Activity implements SensorEventListener {
 	private Question current;
 	Random generator = new Random(); 
 	boolean answerable;
+	int currentNum;
+	
+	SoundPool correctSound;
+	SoundPool wrongSound;
+	int right = 0;
+	int wrong = 0;
 	
 	
 
@@ -37,6 +47,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 		setContentView(R.layout.activity_main);
 		super.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		scoreValue=0;
+		currentNum=1;
 		sm = (SensorManager)getSystemService(SENSOR_SERVICE);
 		accelerometer = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		sm.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);	
@@ -46,11 +57,15 @@ public class MainActivity extends Activity implements SensorEventListener {
 		leftOption=(TextView)findViewById(R.id.leftOption);
 		rightOption=(TextView)findViewById(R.id.rightOption);
 		score=(TextView)findViewById(R.id.score);
-		questionText=(TextView)findViewById(R.id.questionText);
+		questionText=(EditText)findViewById(R.id.questionEditText);
 		
 		newTable (hT);
-		current = hT.get(generator.nextInt(20) + 1);
+		current = hT.get(currentNum);
 		
+		correctSound=new SoundPool(1,AudioManager.STREAM_MUSIC,0);
+		right = correctSound.load(this, R.raw.correct_sound, 1);
+		wrongSound=new SoundPool(1,AudioManager.STREAM_MUSIC,0);
+		wrong = wrongSound.load(this, R.raw.wrong_sound,1);
 	}
 
 	@Override
@@ -84,11 +99,14 @@ public class MainActivity extends Activity implements SensorEventListener {
 			leftOption.setBackgroundColor(getResources().getColor(R.color.BRACK));
 			if (answer == current.getAnswer()) {	
 				scoreValue += 100;
+				correctSound.play(right, 1, 1, 0, 0, 1);
 			}
 			else {
 				scoreValue -= 50;
+				wrongSound.play(wrong, 1, 1, 0, 0, 1);
 			}
-			current = hT.get(generator.nextInt(20) + 1);
+			current = hT.get(currentNum);
+			++currentNum;
 			answerable = false;
 		} 
 		else if (event.values[1]<-8 && answerable) {
@@ -98,11 +116,14 @@ public class MainActivity extends Activity implements SensorEventListener {
 			rightOption.setBackgroundColor(getResources().getColor(R.color.BRACK));
 			if (answer == current.getAnswer()) {
 				scoreValue += 100;
+				correctSound.play(right, 1, 1, 0, 0, 1);
 			}
 			else {
 				scoreValue -= 50;
+				wrongSound.play(wrong, 1, 1, 0, 0, 1);
 			}
-			current = hT.get(generator.nextInt(20) + 1);
+			current = hT.get(currentNum);
+			++currentNum;
 			answerable = false;
 		} 
 		else if (event.values[0]>8 && answerable) {
@@ -112,11 +133,14 @@ public class MainActivity extends Activity implements SensorEventListener {
 			rightOption.setBackgroundColor(getResources().getColor(R.color.BRACK));
 			if (answer == current.getAnswer()) {
 				scoreValue += 100;
+				correctSound.play(right, 1, 1, 0, 0, 1);
 			}
 			else {
 				scoreValue -= 50;
+				wrongSound.play(wrong, 1, 1, 0, 0, 1);
 			}
-			current = hT.get(generator.nextInt(20) + 1);
+			current = hT.get(currentNum);
+			++currentNum;
 			answerable = false;
 		} 
 		else if (event.values[0]<-8 && answerable) {
@@ -126,17 +150,23 @@ public class MainActivity extends Activity implements SensorEventListener {
 			rightOption.setBackgroundColor(getResources().getColor(R.color.BRACK));
 			if (answer == current.getAnswer()) {
 				scoreValue += 100;
+				correctSound.play(right, 1, 1, 0, 0, 1);
 			}
 			else {
 				scoreValue -= 50;
+				wrongSound.play(wrong, 1, 1, 0, 0, 1);
 			}
-			current = hT.get(generator.nextInt(20) + 1);
+			current = hT.get(currentNum);
+			++currentNum;
 			answerable = false;
+		}
+		if (currentNum==20) {
+			currentNum=1;
 		}
 		
 		
 	}
-	
+
 	public void newTable (HashTable h){
 		Question q;
 		q = new Question (1, "What is the tallest mountain?", "Everest", "Alps", "Fuji", "Olympus", 1);

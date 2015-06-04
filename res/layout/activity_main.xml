@@ -12,17 +12,16 @@
     tools:context=".MainActivity" >
 
     <TextView
-        android:id="@+id/topOption"
+        android:id="@+id/leftOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/text_view_background"
-        android:text="@string/top_option_text_view"
+        android:layout_centerVertical="true"
+        android:text="@string/left_option_text_view"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/option_color"
         android:textSize="@dimen/medium_text_size"
-        android:textStyle="bold" />
+        android:textStyle="normal" 
+        android:background="@null" />
 
     <TextView
         android:id="@+id/botOption"
@@ -30,64 +29,81 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/text_view_background"
+        android:background="@null"
         android:text="@string/buttom_option_text_view"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/option_color"
         android:textSize="@dimen/medium_text_size"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/leftOption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:background="@color/text_view_background"
-        android:text="@string/buttom_option_text_view"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/option_color"
-        android:textSize="@dimen/medium_text_size"
-        android:textStyle="bold" />
+        android:textStyle="normal" />
 
     <TextView
         android:id="@+id/rightOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/leftOption"
-        android:layout_alignBottom="@+id/leftOption"
         android:layout_alignParentRight="true"
-        android:background="@color/text_view_background"
+        android:layout_centerVertical="true"
         android:text="@string/right_option_text_view"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/option_color"
         android:textSize="@dimen/medium_text_size"
-        android:textStyle="bold" />
+        android:textStyle="normal"
+        android:background="@null" />
+
+    <TextView
+        android:id="@+id/topOption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@null"
+        android:text="@string/top_option_text_view"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/option_color"
+        android:textSize="@dimen/medium_text_size"
+        android:textStyle="normal" />
+
+    <EditText
+        android:id="@+id/questionEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center_vertical|center_horizontal"
+        android:includeFontPadding="false"
+        android:inputType="textMultiLine"
+        android:text="@string/question_text_view"
+        android:textColor="@color/question_color"
+        android:textSize="@dimen/large_text_size"
+        android:textStyle="bold"
+        android:background="@null" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/score_text_constant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/score_text_constant"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/medium_text_size" />
 
     <TextView
         android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/topOption"
-        android:layout_alignBottom="@+id/topOption"
-        android:layout_alignLeft="@+id/leftOption"
-        android:layout_marginLeft="17dp"
+        android:layout_alignBaseline="@+id/score_text_constant"
+        android:layout_alignBottom="@+id/score_text_constant"
+        android:layout_marginLeft="9dp"
+        android:layout_toRightOf="@+id/score_text_constant"
         android:text="@string/score_text_view"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/score_color"
         android:textSize="@dimen/medium_text_size" />
-
-    <TextView
-        android:id="@+id/questionText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/leftOption"
-        android:layout_centerHorizontal="true"
-        android:text="@string/question_text_view"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:singleLine="false"
-        android:textColor="@color/question_color"
-        android:textSize="@dimen/large_text_size"
-        android:textStyle="bold" />
 
 </RelativeLayout>
